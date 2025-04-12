@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Panda</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f8e1e7, #fceff9);
+      color: #4b2e2e;
+      overflow-x: hidden;
+    }
+
+    .background-effects {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .floating {
+      position: absolute;
+      animation: float 10s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0.8);
+        opacity: 0;
+      }
+      50% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.1);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 5vh 10vw;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #b76e79;
+    }
+
+    p {
+      font-size: 1.2em;
+      max-width: 700px;
+      margin: 20px auto;
+      line-height: 1.6em;
+    }
+
+    .footer {
+      margin-top: 50px;
+      font-size: 1.4em;
+      font-weight: bold;
+      color: #a35656;
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Background -->
+  <div class="background-effects" id="effects"></div>
+
+  <!-- Main Birthday Message -->
+  <div class="container">
+    <h1>Happy Birthday Panda! 🎉</h1>
+    <p>
+      Today isn’t just a date on the calendar — it’s a reminder that the world got a little brighter the day you were born.<br><br>
+      Your smile? Magic. Your laugh? Contagious. Your heart? One in a billion.<br><br>
+      I hope this birthday surrounds you with everything beautiful — just like you.<br><br>
+      Let’s make wishes, chase dreams, and never stop being the adorable chaos that is you.<br><br>
+      🥂 Here's to you, Panda — the rarest kind of human: sweet, strong, and impossibly lovable.<br><br>
+      Happy Birthday, Panda. 🐼💫
+    </p>
+    <div class="footer">Forever your biggest fan, Nikul 💖</div>
+  </div>
+
+  <script>
+    const effects = document.getElementById('effects');
+    const emojis = ['💖', '✨', '🎈'];
+
+    function createFloating(emoji) {
+      const el = document.createElement('div');
+      el.className = 'floating';
+      el.textContent = emoji;
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.top = '100vh';
+      el.style.fontSize = (Math.random() * 20 + 20) + 'px';
+      el.style.animationDuration = (8 + Math.random() * 4) + 's';
+      effects.appendChild(el);
+
+      setTimeout(() => el.remove(), 12000);
+    }
+
+    setInterval(() => {
+      const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+      createFloating(emoji);
+    }, 700);
+  </script>
+</body>
+</html>
